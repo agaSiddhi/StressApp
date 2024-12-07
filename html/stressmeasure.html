@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stress Measure</title>
+    <link rel="icon" href="../destresso.png">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="manifest" href="../manifest.json">
+    <link rel="apple-touch-icon" href="../images/favicon-enhanced.png" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="stylesheet" text="text/CSS" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(152, 178, 206);
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #333;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-links ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .logo {
+            height: 40px;
+        }
+
+        .menu {
+            display: none;
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        .content {
+            margin-top: 100px; /* Adjust this to make space for the navbar */
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            margin: 0 0 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Responsive Navbar for small screens */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+                cursor: pointer;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                padding: 1rem;
+            }
+
+            .nav-links.active {
+                display: block;
+            }
+
+            .menu {
+                display: block;
+                background-color: #333;
+                color: white;
+                padding: 1rem;
+                margin-top: 60px;
+            }
+
+            .menu-link {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 0;
+            }
+
+            .menu-link a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="nav" id="nav">
+        <div>
+            <a class="navbar-brand" href="#!"><img src="../destresso.png" alt="Logo" class="logo" /></a>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <ul class="links" id="navmenu">
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="../index.html#about">ABOUT</a></li>
+                <li><a href="../index.html#services">SERVICES</a></li>
+                <li><a href="../html/contact.html">CONTACT US</a></li>
+                <li><a href=#>STRESS MEASURE </a></li>
+            </ul>
+        </div>
+        <button class="login-button"><a href="../html/login.html">SignUp / Login</a></button>
+        <div class="hamburger" id="ham">
+            <i class="cancel fa-solid fa-xmark"></i>
+            <svg class="burger" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"></path>
+            </svg>
+        </div>
+    </nav>
+
+    <!-- Menu for smaller screens -->
+    <div class="menu" id="menu">
+        <ul class="menu-link">
+            <li><a href="../index.html">HOME</a></li>
+            <li><a href="../index.html#about">ABOUT</a></li>
+            <li><a href="../index.html#services">SERVICES</a></li>
+            <li><a href="../html/contact.html">CONTACT US</a></li>
+        </ul>
+    </div>
+
+    <!-- Content of Stress Measure page -->
+    <div class="content">
+        <h1>Stress Measure</h1>
+    </div>
+
+    <div class="container">
+        <h2>Stress Detection Form</h2>
+        <form id="stressForm" action="/predict" method="post">
+            <label for="feature1">Enter How you are feeling now:</label>
+            <input type="text" id="feature1" name="feature1" required><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("stressForm").onsubmit = async function(event) {
+            event.preventDefault();  
+            console.log("here")
+            const formData = new FormData(event.target);
+            const response = await fetch("http://127.0.0.1:5000/predict", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+            console.log(result);
+            document.getElementById("result").innerText = "Prediction: " + result.prediction;
+        };
+    </script>
+</body>
+</html>
